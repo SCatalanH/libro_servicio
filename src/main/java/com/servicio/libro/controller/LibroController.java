@@ -20,20 +20,18 @@ public class LibroController {
     @Autowired
     private LibroService libroService;
 
-    // Permite acceso a USER y ADMIN
+   
     @GetMapping
     public List<Libro> listar() {
         return libroService.obtenerTodos();
     }
 
-    // Permite acceso a USER y ADMIN
     @GetMapping("/{id}")
     public ResponseEntity<Libro> obtener(@PathVariable Long id) {
         Libro libro = libroService.obtenerPorId(id);
         return ResponseEntity.ok(libro);
     }
 
-    // Solo ADMIN puede crear
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Libro> crear(@Valid @RequestBody Libro libro) {
@@ -41,7 +39,6 @@ public class LibroController {
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoLibro);
     }
 
-    // Solo ADMIN puede actualizar
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<Libro> actualizar(@PathVariable Long id, @Valid @RequestBody Libro libro) {
@@ -49,7 +46,7 @@ public class LibroController {
         return ResponseEntity.ok(libroActualizado);
     }
 
-    // Solo ADMIN puede eliminar
+
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {

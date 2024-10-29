@@ -21,11 +21,11 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/libros").hasAnyRole("USER", "ADMIN") // Permitir que USER y ADMIN vean la lista de libros
-                .requestMatchers("/api/libros/**").hasRole("ADMIN") // Solo ADMIN puede crear, actualizar o eliminar
+                .requestMatchers("/api/libros").hasAnyRole("USER", "ADMIN") 
+                .requestMatchers("/api/libros/**").hasRole("ADMIN") 
                 .anyRequest().authenticated()
             )
-            .httpBasic(); // Usamos autenticación básica para simplificar
+            .httpBasic(); 
         return http.build();
     }
 

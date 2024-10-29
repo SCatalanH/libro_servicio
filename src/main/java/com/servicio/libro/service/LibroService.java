@@ -1,5 +1,6 @@
 package com.servicio.libro.service;
 
+import com.servicio.libro.exception.NotFoundException;
 import com.servicio.libro.model.Libro;
 import com.servicio.libro.repository.LibroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class LibroService {
 
     public Libro obtenerPorId(Long id) {
         return libroRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Libro no encontrado"));
+                .orElseThrow(() -> new NotFoundException("Libro con ID " + id + " no encontrado"));
     }
 
     public Libro crear(Libro libro) {
@@ -36,6 +37,7 @@ public class LibroService {
     }
 
     public void eliminar(Long id) {
-        libroRepository.deleteById(id);
+        Libro libro = obtenerPorId(id);
+        libroRepository.delete(libro);
     }
 }
