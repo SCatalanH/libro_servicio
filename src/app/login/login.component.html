@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <form (ngSubmit)="login()">
+        <h2 class="text-center">Iniciar Sesión</h2>
+        <!-- Email input -->
+        <div data-mdb-input-init class="form-outline mb-4">
+          <input
+            type="email"
+            [(ngModel)]="correo"
+            name="correo"
+            id="form2Example1"
+            class="form-control"
+          />
+          <label class="form-label" for="form2Example1">Correo Electrónico</label>
+        </div>
+
+        <!-- Password input -->
+        <div data-mdb-input-init class="form-outline mb-4">
+          <input
+            type="password"
+            [(ngModel)]="contrasena"
+            name="contrasena"
+            id="form2Example2"
+            class="form-control"
+          />
+          <label class="form-label" for="form2Example2">Contraseña</label>
+        </div>
+
+        <!-- Botón de login -->
+        <button
+          type="submit"
+          data-mdb-button-init
+          data-mdb-ripple-init
+          class="btn btn-primary btn-block mb-4"
+        >
+          Iniciar Sesión
+        </button>
+
+        <p class="text-center">
+          ¿No eres miembro? <a [routerLink]="['/register']">Regístrate</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

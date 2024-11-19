@@ -1,0 +1,25 @@
+/* Centrar el contenedor */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  /* Estilizar la tarjeta */
+  .card {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  /* Agregar padding al contenido de la tarjeta */
+  .card-body {
+    padding: 20px;
+  }
+  
